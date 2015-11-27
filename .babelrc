@@ -1,0 +1,16 @@
+{
+  "stage": 0,
+  "ignore": [],
+  "env": {
+    "node": {
+      "whitelist": [
+        "es6.modules",
+        "es6.parameters",
+        "es6.destructuring",
+        "es6.spread",
+        "es7.objectRestSpread",
+        "react"
+      ]
+    }
+  }
+}

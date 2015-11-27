@@ -1,0 +1,51 @@
+{% extends '../index.html' %}
+
+{% block title %}修改成就{% endblock %}
+
+{% block content %}
+    <form class="form-horizontal" method="post" action="/admin/achieve/edit" role="form">
+      <div class="col-md-7">
+          <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">标题</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="title" name="title" value="{{achieve.title}}" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="desc" class="col-sm-2 control-label">描述</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="desc" name="desc" value="{{achieve.desc}}" placeholder="">
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="icon" class="col-sm-2 control-label">小图标</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="icon" name="icon" value="{{achieve.icon}}" placeholder="小图标链接">
+                <!-- <p class="form-description">Use comma to separate genres.</p> -->
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="score" class="col-sm-2 control-label">成就点</label>
+              <div class="col-sm-10">
+                <!-- <textarea id="plot" class="form-control" name="plot" style="width: 100%;" rows="6"></textarea> -->
+                <input type="text" class="form-control" id="score" name="score" value="{{achieve.score}}" placeholder="">
+                <p class="form-description">成就点 默认为1分，特殊需求可以5分，10分</p>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">新增成就</button>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-1">
+        <div class="image-upload"></div>
+        <p>** Need more work to get file upload work.</p>
+      </div>
+
+    </form>
+{% endblock %}

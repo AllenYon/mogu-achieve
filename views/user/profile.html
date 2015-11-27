@@ -1,0 +1,111 @@
+{% extends '../index.html' %}
+
+{% block title %}Profle{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>username</th>
+      <th>department</th>
+      <th>avatar</th>
+      <th>words</th>
+      <th>likes</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{profile._id}}</td>
+      <td>{{profile.username}}</td>
+      <td>{{profile.department}}</td>
+      <td><img src="{{profile.avatar}}"></td>
+      <td>{{profile.words}}</td>
+      <td>{{profile.likes}}</td>
+      <td>{{profile.score}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>已完成成就</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>desc</th>
+      <th>score</th>
+      <th>icon</th>
+      <th>申请图</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if profile.done_list.length > 0 %}
+        {% for item in profile.done_list %}
+        <tr>
+          <td>{{item.achieve.title}}</td>
+          <td>{{item.achieve.desc}}</td>
+          <td>{{item.achieve.score}}</td>
+          <td><img heigh="30" width="30" src="{{item.achieve.icon}}"></td>
+          <td><img heigh="30" width="30" src="{{item.extra.images[0]}}"></td>
+        </tr>
+        {% endfor %}
+    {% endif%}
+  </tbody>
+</table>
+
+<h2>申请中成就</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>desc</th>
+      <th>score</th>
+      <th>icon</th>
+      <th>申请图</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if profile.apply_list.length > 0 %}
+        {% for item in profile.apply_list %}
+        <tr>
+          <td>{{item.achieve.title}}</td>
+          <td>{{item.achieve.desc}}</td>
+          <td>{{item.achieve.score}}</td>
+          <td><img width="30" height="30" src="{{item.achieve.icon}}"></td>
+          <td><img heigh="30" width="30" src="{{item.extra.images[0]}}"></td>
+        </tr>
+        {% endfor %}
+    {% endif%}
+  </tbody>
+</table>
+
+
+<h2>未完成成就</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>desc</th>
+      <th>score</th>
+      <th>icon</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if profile.undone_list.length > 0 %}
+        {% for item in profile.undone_list %}
+        <tr>
+          <td>{{item.title}}</td>
+          <td>{{item.desc}}</td>
+          <td>{{item.score}}</td>
+          <td><img width="30" height="30" src="{{item.icon}}"></td>
+          <th>
+            <a class="btn btn-primary" href="/achieve/{{ item._id+'' }}" role="button">详情</a>
+          </th>
+        </tr>
+        {% endfor %}
+    {% endif%}
+  </tbody>
+</table>
+{% endblock %}

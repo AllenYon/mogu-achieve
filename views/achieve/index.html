@@ -1,0 +1,35 @@
+{% extends '../index.html' %}
+
+{% block title %}Achieve{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>title</th>
+      <th>desc</th>
+      <th>score</th>
+      <th>icon</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{achieve._id}}</td>
+      <td>{{achieve.title}}</td>
+      <td>{{achieve.desc}}</td>
+      <td>{{achieve.score}}</td>
+      <td><img width="30" height="30" src="{{achieve.icon}}"></td>
+      <td>
+        <form action="/achieve/{{achieve._id+''}}/apply" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" multiple>
+          <input class="btn btn-primary" type="submit" value="申请">
+          <!-- <a class="btn btn-primary" href="/achieve/{{ item._id+'' }}" role="button">申请</a> -->
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}

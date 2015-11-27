@@ -1,0 +1,130 @@
+{% extends '../index.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">成就申请 管理</div>
+    <div class="panel-body">
+      <p>...</p>
+    </div>
+
+    <!-- Table -->
+    {% if achieve_users.length > 0 %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>user_id</th>
+          <th>achieve_id</th>
+          <th>status</th>
+          <th>extra</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in achieve_users %}
+        <tr>
+          <td>{{item._id}}</td>
+          <td>{{item.user_id}}</td>
+          <td>{{item.achieve_id}}</td>
+          <td>{{item.status}}</td>
+          <td><img src="{{item.extra.images[0]}}" width="30" height="30"></td>
+          <td>
+            <form action="/admin/achieve_user/{{item._id+''}}/update" method="post" >
+              <input type="text" name="status" value="2" hidden="hidden" >
+              <input class="btn btn-primary" type="submit" value="通过">
+            </form>
+            <!-- <a class="btn btn-primary" href="#" role="button">通过</a> -->
+            <!-- <a class="btn btn-primary" href="#" role="button">拒绝</a> -->
+
+            <form action="/admin/achieve_user/{{item._id+''}}/update" method="post" >
+              <input type="text" name="status" value="0" hidden="hidden" >
+              <input class="btn btn-primary" type="submit" value="拒绝">
+            </form>
+
+            <a class="btn btn-primary" href="#" role="button">查看</a>
+          <td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif%}
+  </div>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">成就管理  <a class="btn btn-primary" href="achieve/add" role="button">新增</a></div>
+    <div class="panel-body">
+      <p>...</p>
+    </div>
+
+    <!-- Table -->
+    {% if achieves.length > 0 %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>desc</th>
+          <th>icon</th>
+          <th>score</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in achieves %}
+        <tr>
+          <td>{{item._id}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.desc}}</td>
+          <td><img src="{{item.icon}}" width="30" height="30"></td>
+          <td>{{item.score}}</td>
+          <td>
+            <a class="btn btn-primary" href="/admin/achieve/{{ item._id+'' }}/edit" role="button">修改</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif%}
+  </div>
+
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">人员管理</div>
+    <div class="panel-body">
+      <p>...</p>
+    </div>
+
+    <!-- Table -->
+    {% if users.length > 0 %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>username</th>
+          <th>avatar</th>
+          <th>words</th>
+          <th>likes</th>
+          <th>scores</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in users %}
+        <tr>
+          <td>{{item._id}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.avatar}}</td>
+          <td>{{item.words}}</td>
+          <td>{{item.likes}}</td>
+          <td>{{item.scores}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif%}
+  </div>
+{% endblock %}

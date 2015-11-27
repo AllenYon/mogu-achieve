@@ -1,0 +1,21 @@
+[
+  {
+    "username":"Foo",
+    "department":"Foo Department",
+    "avatar":null,
+    "words":"Just Do It",
+    "likes":11,
+    "scores":23,
+    "admin":0,
+  },
+  {
+    "username":"Bee",
+    "department":"Bee Department",
+    "avatar":null,
+    "words":"Just Do It ~~ Bee",
+    "likes":21,
+    "scores":13,
+    "admin":1,
+  }
+
+]

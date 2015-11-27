@@ -1,0 +1,58 @@
+{% extends '../index.html' %}
+
+{% block title %}Books from Murakami{% endblock %}
+
+{% block content %}
+  {% if books.length > 0 %}
+    <section class="books">
+    {% for book in books %}    
+     {% if loop.index0 % 3 == 0 %}
+        <div class="row">
+     {% endif %}
+
+      <article id="book-{{ book._id.toString() }}" class="book-wrapper col-md-4">
+        <div class="book-container">
+          <div class="book">
+            <div class="book-cover">
+              <img src="{{ book.image }}" alt="" style="width: 100%; height="auto" ">
+            </div>
+            <div class="book-spine">
+              
+              <h3>{{ book.title }}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="meta row">
+            <div class="author col-md-9">Murakami</div>
+            <div class="year col-md-3">{{ book.year }}</div>
+          </div>
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.plot }}</p>
+          <div class="genres">
+            {% for ge in book.genre %}
+              <span class="label label-default">{{ ge }}</span>
+            {% endfor %}
+          </div>
+          <div class="links">
+            <a href="/book/{{ book._id.toString() }}/edit" class="btn btn-primary">Edit</a>
+            {# <a href="/api/book/{{ book._id.toString() }}/delete" class="btn btn-danger sweet-delete">Delete book</a> #}
+          </div>
+        </div>
+      </article>
+
+      {% if loop.index0 % 3 == 2 or loop.last %}
+        </div>
+      {% endif %}
+
+    {% endfor %}
+    </section><!-- wrapper -->
+  {% else %}
+    <div class="jumbotron">
+      <p>Oups! Database is empty now.</p>
+      <p><a href="/book/add"><span class="glyphicon glyphicon-cloud-upload"></span> Add some book</a></p>
+      <p><a href="/populate-data"><span class="glyphicon glyphicon-cloud-upload"></span> Import sample database</a></p>
+    </div>
+  {% endif %}
+{% endblock %}
+

@@ -1,0 +1,13 @@
+{% extends '../index.html' %}
+
+{% block title %}登录{% endblock %}
+
+{% block content %}
+  <form class="form-horizontal" method="post" action="/user/login" role="form">
+      <div class="input-group">
+        <input type="text" class="form-control" name="username" value="Foo" placeholder="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" name="password" value="1" placeholder="Password" aria-describedby="basic-addon1">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+  </form>
+{% endblock %}
